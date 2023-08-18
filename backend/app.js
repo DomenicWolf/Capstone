@@ -10,7 +10,11 @@ const { NotFoundError } = require("./expressError");
 const { authenticateJWT } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const userRoutes = require('./routes/users');
-
+const playerRoutes = require('./routes/players');
+const matchRoutes = require('./routes/matchesTest');
+const champRoutes = require('./routes/champs');
+const totalRoutes = require('./routes/total')
+const iconRoutes = require('./routes/icons');
 
 const morgan = require("morgan");
 
@@ -23,6 +27,11 @@ app.use(authenticateJWT);
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/players", playerRoutes);
+app.use("/matches",matchRoutes);
+app.use("/champs",champRoutes);
+app.use('/total', totalRoutes);
+app.use("/icons",iconRoutes);
 
 
 

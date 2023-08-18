@@ -35,6 +35,13 @@ class ExpressError extends Error {
       super(message, 400);
     }
   }
+
+
+  class RateLimitError extends ExpressError {
+    constructor(message = "Rate Limit Exceeded") {
+      super(message, 429);
+    }
+  }
   
   /** 403 BAD REQUEST error. */
   
@@ -50,4 +57,5 @@ class ExpressError extends Error {
     UnauthorizedError,
     BadRequestError,
     ForbiddenError,
+    RateLimitError
   };

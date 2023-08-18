@@ -34,14 +34,131 @@ CREATE TABLE players (
   tft_wins INT,
   tft_losses INT
 );
+CREATE TABLE champs (
+  champ_id INT NOT NULL,
+  champ_name TEXT NOT NULL,
+  champ_icon TEXT NOT NULL
+);
 
-CREATE TABLE player_champs (
-  summoner_id TEXT PRIMARY KEY
+CREATE TABLE player_champs_total (
+  summoner_id TEXT NOT NULL
     REFERENCES players ON DELETE CASCADE,
   champ_id INT NOT NULL,
   champ_name TEXT NOT NULL,
+  champ_icon TEXT,
   games_played INT,
   games_won INT,
-  games_lost INT
+  games_lost INT,
+  time_played INT,
+  cs_per_minute NUMERIC,
+  cs NUMERIC,
+  kills INT,
+  deaths INT,
+  assists INT,
+  kda NUMERIC
 );
+
+CREATE TABLE player_champs_flex (
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  champ_id INT NOT NULL,
+  champ_name TEXT NOT NULL,
+  champ_icon TEXT,
+  games_played INT,
+  games_won INT,
+  games_lost INT,
+  time_played INT,
+  cs_per_minute NUMERIC,
+  cs NUMERIC,
+  kills INT,
+  deaths INT,
+  assists INT,
+  kda NUMERIC
+);
+
+CREATE TABLE player_champs_solo (
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  champ_id INT NOT NULL,
+  champ_name TEXT NOT NULL,
+  champ_icon TEXT,
+  games_played INT,
+  games_won INT,
+  games_lost INT,
+  time_played INT,
+  cs_per_minute NUMERIC,
+  cs NUMERIC,
+  kills INT,
+  deaths INT,
+  assists INT,
+  kda NUMERIC
+);
+
+CREATE TABLE player_solo_matches (
+  match_id TEXT NOT NULL,
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  match_date TIMESTAMP,
+  match_details jsonb
+);
+
+CREATE TABLE player_flex_matches (
+  match_id TEXT NOT NULL,
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  match_date TIMESTAMP,
+  match_details jsonb
+); 
+
+
+CREATE TABLE player_total_matches (
+  match_id TEXT NOT NULL,
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  match_date TIMESTAMP,
+  match_details jsonb
+); 
+
+CREATE TABLE player_tft_matches (
+  match_id TEXT NOT NULL,
+  summoner_id TEXT NOT NULL
+    REFERENCES players ON DELETE CASCADE,
+  match_date TIMESTAMP,
+  match_details jsonb
+);
+
+CREATE TABLE items (
+  item_id INT NOT NULL,
+  item_name TEXT NOT NULL,
+  item_icon TEXT NOT NULL,
+  item_gold INT NOT NULL,
+  item_stats jsonb,
+  item_desc TEXT
+);
+
+CREATE TABLE sum_spells (
+  sum_id TEXT NOT NULL,
+  sum_name TEXT NOT NULL,
+  sum_icon TEXT NOT NULL,
+  sum_desc TEXT NOT NULL
+);
+
+CREATE TABLE runes (
+  rune_id INT NOT NULL,
+  rune_name TEXT NOT NULL,
+  rune_icon TEXT NOT NULL,
+  rune_icon_number INT
+);
+
+CREATE TABLE profile_icons (
+  profile_id INT NOT NULL,
+  profile_icon TEXT NOT NULL
+);
+
+CREATE TABLE rank_icons (
+  rank_name TEXT NOT NULL,
+  rank_icon TEXT NOT NULL
+);
+
+
 

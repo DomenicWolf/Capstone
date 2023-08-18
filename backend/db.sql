@@ -6,3 +6,4 @@ CREATE DATABASE stat;
 \connect stat
 
 \i db-schemas.sql
+\i images.sql
