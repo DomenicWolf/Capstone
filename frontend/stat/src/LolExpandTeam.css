@@ -1,0 +1,158 @@
+.expand-name {
+    color: aliceblue;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.expand-champ-img {
+    border-radius: 100px;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.expand-box {
+    background-color: #331d30; 
+    
+    border-radius: 10px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    margin-bottom: .1rem;
+    
+}
+
+.expand-sum-img {
+    height: .9rem;
+    width: .9rem;
+    margin-left: .2rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .expand-rune-img{
+    height: .9rem;
+    width: .9rem;
+    margin-left: .2rem;
+  }
+
+.mb--1 {
+    margin-top: -1rem;
+}
+.mr-1 {
+    margin-right:.5rem ;
+}
+
+.decorative-lol-expand {
+    background-color: rgb(95, 81, 94);
+    margin-top: .5rem;
+    height: 3.5rem;
+    width: 0px;
+    border-radius: 2px;
+    margin: 0px;
+    padding-left: .1rem;
+    padding-right: .1rem;
+    
+  }
+
+  .expand-item{
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 10px;
+    
+}
+.expand-items {
+    margin-top: .8rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.empty {
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: #5f4c5c;
+   border-radius: 5px;
+   /* display: inline-block;
+   vertical-align: middle; */
+   
+}
+
+.expand-top-info {
+    color: aliceblue;
+    font-size: .8rem;
+}
+
+.expand-blue {
+    background-color: rgb(19, 38, 63);
+}
+
+.expand-red {
+    background-color: rgb(65, 19, 19);
+}
+
+.expand-kda {
+    margin-top: .5rem;
+    color: aliceblue;
+    font-size: .8rem;
+    margin-bottom: 0;
+}
+
+.expand-kda-contanier {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.expand-kda-calc {
+    margin-top: 0;
+    color: aliceblue;
+    font-size: .6rem;
+}
+
+.expand-cs {
+    margin-top: .5rem;
+    color: aliceblue;
+    font-size: .8rem;
+    margin-bottom: 0;
+}
+
+.expand-cs-min{
+    margin-top: 0;
+    color: aliceblue;
+    font-size: .6rem;
+}
+
+.item-kda-cs-container{
+    padding-left: 0;
+    padding-right: .4rem;
+}
+
+.expand-info-container {
+    padding-left: .5rem;
+    padding-right: 0;
+}
+.expand-name-container{
+    padding-left: .5rem;
+    padding-right: 0;
+}
+
+.damage-p {
+   
+    color: aliceblue;
+    font-size: .8rem;
+    margin-bottom: 0;
+    margin-left: 3rem;
+}
+
+.damage-container {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.expand-top-names {
+    justify-content: space-evenly;
+}
+
+.expand-top-kda {
+    margin-left: 3rem;
+}
+
+.expand-top-cs{
+    margin-right: 2rem;
+}

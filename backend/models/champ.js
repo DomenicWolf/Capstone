@@ -32,9 +32,10 @@ class Champ {
         const result = await db.query(
             `SELECT summoner_id AS "summonerId",champ_id AS "champId",champ_icon AS "champIcon",
             time_played AS "timePlayed", games_played AS "gamesPlayed",games_won AS "gamesWon",
-            games_lost AS "gamesLost", cs,kills,deaths,assists,kda FROM player_champs_${type}
+            games_lost AS "gamesLost", cs,kills,deaths,assists,kda,wr FROM player_champs_${type}
              WHERE summoner_id = $1 AND champ_id = $2`,[summonerId,champId]
         );
+       
         return result.rows[0];
     }
 
@@ -42,25 +43,29 @@ class Champ {
         const result = await db.query(
             `SELECT summoner_id AS "summonerId",champ_id AS "champId",champ_icon AS "champIcon",
             time_played AS "timePlayed", games_played AS "gamesPlayed",games_won AS "gamesWon",
-            games_lost AS "gamesLost", cs,kills,deaths,assists,kda FROM player_champs_${type}
+            games_lost AS "gamesLost", cs,kills,deaths,assists,kda,wr FROM player_champs_${type}
              WHERE summoner_id = $1`,[summonerId]
         );
         return result.rows;
     }
 
-    static async addToSolo(summonerId,champId,champName,outcome,timePlayed,cs,kills,deaths,assists){
-        let alreadyExists = false;
+    static async addToSolo(summonerId,champId,champName,outcome,timePlayed,cs,kills,deaths,assists,alreadyExists = false){
+        
         let champ;
         try{
             champ = await Champ.get(summonerId,champId,'solo');
+            
+            champ ? console.log(champ.champIcon) : console.log('no champ')
         }catch(e){
-
+            console.log(e)
         }
         let gamesPlayed;
         let newCs;
         let newTimePlayed;
         let kda = (kills+assists)/deaths;
+        
         if(champ){
+            
             alreadyExists = true;
             gamesPlayed = champ.gamesPlayed + 1;
             newCs = cs/(timePlayed/60);
@@ -74,19 +79,24 @@ class Champ {
         let type;
         let amount;
         let data;
-        
+        let wr;
         if(outcome === 'win' && alreadyExists){
             type = 'won';
             let gamesWon = champ.gamesWon + 1;
             cs = newCs; 
             timePlayed = newTimePlayed;
-            data = {cs,gamesPlayed,gamesWon,timePlayed,kills,deaths,assists,kda};
+            wr = ((gamesWon/gamesPlayed) * 100).toFixed(1)
+            data = {cs,gamesPlayed,gamesWon,timePlayed,kills,deaths,assists,kda,wr};
         }else if(outcome === 'loss' && alreadyExists){
             type = 'lost';
+            let gamesWon = champ.gamesWon
             let gamesLost = champ.gamesLost + 1;
             cs = newCs
             timePlayed = newTimePlayed;
-            data = {cs,gamesPlayed,gamesLost,timePlayed,kills,deaths,assists,kda};
+            wr = ((gamesWon/gamesPlayed) * 100).toFixed(1)
+            wr = Number(wr)
+          
+            data = {cs,gamesPlayed,gamesLost,timePlayed,kills,deaths,assists,kda,wr};
         }
         let result;
         if(alreadyExists){
@@ -103,13 +113,15 @@ class Champ {
                   timePlayed:"time_played"
                 });
             const summonerVarIdx = "$" + (values.length + 1);
+            const champVarIdx = "$" + (values.length + 2);
         
             const querySql = `UPDATE player_champs_solo 
                               SET ${setCols} 
                               WHERE summoner_id = ${summonerVarIdx} 
-                              AND champ_id = ${champId}
+                              AND champ_id = ${champVarIdx}
                               RETURNING * `;
-            result = await db.query(querySql, [...values, summonerId]);
+                              
+            result = await db.query(querySql, [...values, summonerId,champId]);
             const addedChamp = result.rows[0];
             return addedChamp;
             
@@ -121,15 +133,72 @@ class Champ {
             let gamesLost = 0;
             if(outcome === 'win') gamesWon++;
             if(outcome === 'loss') gamesLost++;
+            wr = ((gamesWon/1) * 100).toFixed(1)
+            wr = Number(wr)
             cs = cs/(timePlayed/60);
             cs = cs.toFixed(1)
-            result = await db.query(
-                `INSERT INTO player_champs_solo
-                 (summoner_id, champ_id,champ_name,time_played,games_played,games_won,games_lost,cs,kills,deaths,assists,kda,champ_icon)
-                 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
-                 RETURNING *`,
-                 [summonerId,champId,champName,timePlayed,1,gamesWon,gamesLost,cs,kills,deaths,assists,kda,champIcon]
-            )
+            try {
+                  result = await db.query(
+                    `INSERT INTO player_champs_solo
+                    (summoner_id, champ_id,champ_name,time_played,games_played,games_won,games_lost,cs,kills,deaths,assists,kda,champ_icon,wr)
+                    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+                    RETURNING *`,
+                        [summonerId,champId,champName,timePlayed,1,gamesWon,gamesLost,cs,kills,deaths,assists,kda,champIcon,wr]
+                )
+            }catch(e){
+                champ = await Champ.get(summonerId,champId,'solo');
+                gamesPlayed = champ.gamesPlayed + 1;
+                newCs = cs/(timePlayed/60);
+                newTimePlayed = champ.timePlayed + timePlayed;
+                kills = champ.kills + kills;
+                deaths = champ.deaths + deaths;
+                assists = champ.assists + assists;
+                kda = (kills + assists) / deaths
+                if(outcome === 'win'){
+                    type = 'won';
+                    console.log(champ)
+                    let gamesWon = champ.gamesWon + 1;
+                    cs = newCs; 
+                    timePlayed = newTimePlayed;
+                    wr = ((gamesWon/gamesPlayed) * 100).toFixed(1)
+                    data = {cs,gamesPlayed,gamesWon,timePlayed,kills,deaths,assists,kda,wr};
+                }else if(outcome === 'loss'){
+                    type = 'lost';
+                    console.log(champ,'L')
+                    let gamesWon = champ.gamesWon
+                    let gamesLost = champ.gamesLost + 1;
+                    cs = newCs
+                    timePlayed = newTimePlayed;
+                    wr = ((gamesWon/gamesPlayed) * 100).toFixed(1)
+                    wr = Number(wr)
+                  
+                    data = {cs,gamesPlayed,gamesLost,timePlayed,kills,deaths,assists,kda,wr};
+                }
+                const { setCols, values } = sqlForPartialUpdate(
+                    data,
+                    {
+                      summonerId: "summoner_id",
+                      champId: "champ_id",
+                      champName: "champ_id",
+                      gamesPlayed: "games_played",
+                      gamesWon: "games_won",
+                      gamesLost:"games_lost",
+                      timePlayed:"time_played"
+                    });
+                const summonerVarIdx = "$" + (values.length + 1);
+                const champVarIdx = "$" + (values.length + 2);
+            
+                const querySql = `UPDATE player_champs_solo 
+                                  SET ${setCols} 
+                                  WHERE summoner_id = ${summonerVarIdx} 
+                                  AND champ_id = ${champVarIdx}
+                                  RETURNING * `;
+                                  
+                result = await db.query(querySql, [...values, summonerId,champId]);
+                const addedChamp = result.rows[0];
+                return addedChamp;
+            }
+          
 
             const addedChamp = result.rows[0];
             return addedChamp;

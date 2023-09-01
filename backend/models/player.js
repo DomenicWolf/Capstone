@@ -34,7 +34,7 @@ class Player {
                 [summonerId]
         );
         const player = result.rows[0];
-        console.log(player)
+        // console.log(player)
         if (!player) return null;
     const response = {
       summonerId: player.summonerId,
@@ -71,24 +71,21 @@ class Player {
    }
 
   static async add(summonerId){
-    let apiV4Result;
-    let apiLeagueResult;
-    let apiTftResult;
+    // let apiV4Result;
+    // let apiLeagueResult;
+    // let apiTftResult;
+    const test =  await Player.get(summonerId)
+    console.log(test,111)
     try {    
-      apiV4Result = await axios.get(`${leagueBaseUrl}summoner/v4/summoners/${summonerId}`,{headers});
-      apiLeagueResult = await axios.get(`${leagueBaseUrl}league/v4/entries/by-summoner/${apiV4Result.data.id}`,{headers});
-      apiTftResult = await axios.get(`${tftBaseUrl}${apiV4Result.data.id}`,{headers});
-      console.log(29433)
-      }catch(e){
-        console.log(e.response.status)
-        if (e.response && e.response.status === 429) {
-          throw new RateLimitError(e)
-      }else if(e.response.status === 404){
-        throw new NotFoundError(e)
-      }else {
-          throw new BadRequestError(e)
-      }
-    }
+      const apiV4Result = await axios.get(`${leagueBaseUrl}summoner/v4/summoners/${summonerId}`,{headers});
+      // apiLeagueResult = await axios.get(`${leagueBaseUrl}league/v4/entries/by-summoner/${apiV4Result.data.id}`,{headers});
+      // apiTftResult = await axios.get(`${tftBaseUrl}${apiV4Result.data.id}`,{headers});
+      const [apiLeagueResult, apiTftResult] = await Promise.all([
+        axios.get(`${leagueBaseUrl}league/v4/entries/by-summoner/${apiV4Result.data.id}`, { headers }),
+        axios.get(`${tftBaseUrl}${apiV4Result.data.id}`, { headers }),
+      ]);
+    
+      
       let tft;
       for(let d of apiTftResult.data){
         if(d.queueType === "RANKED_TFT") tft = d
@@ -133,7 +130,17 @@ class Player {
       )   
         
           return Player.get(apiV4Result.data.id) 
-          
+          }catch(e){
+            console.log(e)
+        
+        if (e.response && e.response.status === 429) {
+          throw new RateLimitError(e)
+      }else if(e.response && e.response.status === 404){
+        throw new NotFoundError(e)
+      }else {
+          throw new BadRequestError('DUPLICATE')
+      }
+    }
   }
 
 }

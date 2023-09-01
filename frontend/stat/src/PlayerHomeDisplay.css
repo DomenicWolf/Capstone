@@ -1,0 +1,32 @@
+.player-leaderboard {
+    background-color: #332030; 
+    padding: 20px; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.test {
+    color: whitesmoke;
+}
+
+
+.icon-leader {
+    border-radius: 30px;
+}
+
+.player-leader-main {
+    background-color: #2e1b2a; 
+    padding-top:20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+.player-leader-second {
+    background-color: #50404d; 
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+

@@ -50,6 +50,7 @@ CREATE TABLE player_champs_total (
   games_won INT,
   games_lost INT,
   time_played INT,
+  wr NUMERIC,
   cs_per_minute NUMERIC,
   cs NUMERIC,
   kills INT,
@@ -68,6 +69,7 @@ CREATE TABLE player_champs_flex (
   games_won INT,
   games_lost INT,
   time_played INT,
+  wr NUMERIC,
   cs_per_minute NUMERIC,
   cs NUMERIC,
   kills INT,
@@ -86,12 +88,14 @@ CREATE TABLE player_champs_solo (
   games_won INT,
   games_lost INT,
   time_played INT,
+  wr NUMERIC,
   cs_per_minute NUMERIC,
   cs NUMERIC,
   kills INT,
   deaths INT,
   assists INT,
-  kda NUMERIC
+  kda NUMERIC,
+  PRIMARY KEY (summoner_id, champ_id)
 );
 
 CREATE TABLE player_solo_matches (

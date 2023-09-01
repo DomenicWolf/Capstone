@@ -1,0 +1,123 @@
+.loading-div {
+    background-color: #332030; 
+   
+    border-radius: 10px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.player-main {
+    background-color: #332030; 
+    margin-top: 8rem;
+    padding-top: 2rem;
+    border-radius: 12px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.profile-icon {
+    border-radius: 30px;
+}
+
+.container-xs {
+    max-width: 600px; 
+    margin: 0 auto; 
+    margin-top: 5rem;
+  }
+
+
+  /* .player-rank-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b242a;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .player-rank-img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+  } */
+
+
+  .player-info {
+    text-align: center;
+  }
+  
+  .player-rank-container {
+    background-color: #5f4c5c;
+    border-radius: 30px;
+    width: 8rem; 
+    height: 7rem; 
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    margin: 0 auto;
+  }
+  
+  .player-rank-img {
+    width: 200%; /* Increase image size */
+    height: 200%; /* Increase image size */
+    object-fit: cover;
+    position: absolute;
+    top: 50%; /* Vertically center the image */
+    left: 50%; /* Horizontally center the image */
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Rest of your existing styles */
+  
+
+
+
+
+  
+
+
+  .player-page-text {
+    color:aliceblue;
+  }
+
+  .rank-bottom {
+    background-color: #5f4c5c;
+    border-radius: 20px;
+  }
+
+.loading-div-profile{
+    background-color: #332030; 
+    padding-top:5rem;
+    padding-bottom: 5rem;
+    border-radius: 10px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.profile-lol-loading-img{
+    border-radius: 20px;
+}
+
+.green {
+  color: rgb(3, 110, 3);
+}
+
+.yellow-green{
+  color: yellowgreen;
+}
+
+.orange {
+  color: rgb(172, 113, 4);
+}
+
+.red {
+  color: rgb(145, 4, 4);
+}
+
+.btn-update {
+  background-color: #5a3754;
+  color: rgb(187, 165, 187);
+}
+
+.btn-update:hover {
+  background-color: #74576f;
+  color: rgb(202, 176, 202)
+}

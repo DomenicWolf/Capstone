@@ -15,6 +15,7 @@ const matchRoutes = require('./routes/matchesTest');
 const champRoutes = require('./routes/champs');
 const totalRoutes = require('./routes/total')
 const iconRoutes = require('./routes/icons');
+const leaderBoardRoutes = require('./routes/leaderboard');
 
 const morgan = require("morgan");
 
@@ -32,6 +33,7 @@ app.use("/matches",matchRoutes);
 app.use("/champs",champRoutes);
 app.use('/total', totalRoutes);
 app.use("/icons",iconRoutes);
+app.use('/leaderboard',leaderBoardRoutes);
 
 
 

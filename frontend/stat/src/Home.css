@@ -1,0 +1,89 @@
+.teemo {
+    margin-left:40vw;
+}
+.whitesmoke {
+    background-color: #50404d;
+    border: none;
+    
+}
+.form-focus:focus{
+
+        /* border-color: rgb(81, 2, 155); */
+        outline: 2px solid #220049; /* Replace with your desired outline color */
+        
+        /* box-shadow: 0 0 0 0.2rem rgba(84, 2, 95, 0.15);  */
+        background-color: #50404d;
+        border: none;
+
+}
+
+.home-div{
+    background-color: #740261;
+}
+
+
+.section-container {
+    background-color: #332030; 
+   
+    border-radius: 10px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.content-container {
+    margin-bottom: 20px; 
+}
+
+.title {
+    color: #11010e;
+}
+
+input {
+    background-color: #50404d;
+    border-radius: 10px;
+    
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: whitesmoke;
+}
+h1 {
+    color: whitesmoke;
+}
+
+.search-form {
+    border-radius: 240px !important;
+    
+}
+
+
+.challenger {
+    
+    height: 222px;
+    width: 125px;
+}
+
+input::placeholder {
+    color: rgb(144, 130, 153) !important;
+  }
+
+
+  input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 50px rgb(94, 75, 97) inset;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+
+input::webkit-input-placeholder {
+    color: #920f0f; /* Change the color */
+    font-style: italic; /* Change the font style */
+}
+
+
+.home-loading-img{
+    border-radius: 25px;
+}
+
+

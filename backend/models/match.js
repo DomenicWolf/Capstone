@@ -13,8 +13,7 @@ const {
 } = require("../expressError");
 
 const Champ = require('./champ');
-// const leagueBaseUrl = 'https://americas.api.riotgames.com/lol/match/v5/matches/'
-// const tftBaseUrl = 'https://americas.api.riotgames.com/tft/match/v1/matches/'
+
 const headers = {
   "X-Riot-Token": process.env.API_KEY
 }
@@ -47,8 +46,9 @@ class Match {
 //add all matches for a given player, will seperate solo and flex itself
     static async addAllMatches(puuid,summonerId){
         const lolBaseUrl = 'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/';
-        const endUrl = '/ids?start=0&count=20'
+        const endUrl = '/ids?start=0&count=16&queue=420'
         let apiResult;
+        // get info from riot api, return list of matchId, can be used to look up details of each game from seperate api, only get 16 for now since rate limited
         try{
             apiResult = await axios.get(`${lolBaseUrl}${puuid}${endUrl}`,{headers});
         }catch(e){
@@ -59,23 +59,20 @@ class Match {
                 throw new BadRequestError(e)
             }
         }
-    
-        // let results = [];
-        // for(let result of apiResult.data){
-        //     const r = await Match.addLol(result,summonerId);
-        //     if(r)results.push(r)
-        // }
-        // return results;
+        
         const promises = apiResult.data.map(async (result) => {
-            const test = await db.query(`SELECT 'player_solo_matches' AS source_table, *
+            const test = await db.query(`SELECT 'player_solo_matches' AS source_table, 
+                match_id AS "matchId",summoner_id AS "summonerId", match_details AS "matchDetails"
             FROM player_solo_matches
             WHERE match_id = '${result}' AND summoner_id = '${summonerId}'
             UNION
-            SELECT 'player_flex_matches' AS source_table, *
+            SELECT 'player_flex_matches' AS source_table, 
+            match_id AS "matchId",summoner_id AS "summonerId", match_details AS "matchDetails"
             FROM player_flex_matches
             WHERE match_id = '${result}' AND summoner_id = '${summonerId}'
             UNION
-            SELECT 'player_total_matches' AS source_table, *
+            SELECT 'player_total_matches' AS source_table, 
+            match_id AS "matchId",summoner_id AS "summonerId", match_details AS "matchDetails"
             FROM player_total_matches
             WHERE summoner_id = '${summonerId}' AND
             match_id = '${result}'`);
@@ -94,12 +91,11 @@ class Match {
 
         return validResults;
 
-        // const results = await Promise.all(promises);
-        // return results;
     }
 
 //add summoner rift matches and add stats from each match to champion table
-    static async addLol(matchId,summonerId){
+    static async addLol(matchId,summonerId,playerInfoo){
+        //get summoner info  from riot api
         const baseUrl = "https://americas.api.riotgames.com/lol/match/v5/matches/";
         let apiResult;
         let player;
@@ -114,14 +110,18 @@ class Match {
                 throw new BadRequestError(e)
             }
         }
+        //check to make sure game was started during current ranked season
         if(apiResult.data.info.gameCreation < process.env.SPLIT_TIME){
             return null;
         }
+        
         apiResult = apiResult.data;
         let type;
+        //get info for correct user from the match participants
         let playerInfo = apiResult.info.participants.filter(p => p.puuid === player.data.puuid);
         playerInfo = playerInfo[0]
         let outcome = playerInfo.win === true ? 'win' : 'loss';
+        //check for duplicate matchId, if so return said match details
         const testForDup = await db.query(
             `SELECT * FROM player_total_matches
                 WHERE match_id = $1 AND summoner_id = 
@@ -134,88 +134,23 @@ class Match {
             const data = {matchId,summonerId,matchDate,matchDetails};
             return data;
         }
-        
+        // add info from match to champ db for the current player
         const cs = playerInfo.totalMinionsKilled + playerInfo.totalAllyJungleMinionsKilled + playerInfo.totalEnemyJungleMinionsKilled
         await Champ.addToTotal(summonerId,playerInfo.championId,playerInfo.championName,outcome,playerInfo.timePlayed,
             cs,playerInfo.kills,playerInfo.deaths,playerInfo.assists)
-        if(apiResult.info.queueId === 440){
-            type = 'flex';
-            await Champ.addToFlex(summonerId,playerInfo.championId,playerInfo.championName,outcome,playerInfo.timePlayed,
-                cs,playerInfo.kills,playerInfo.deaths,playerInfo.assists)
-        }
-        else if(apiResult.info.queueId === 420){
+        // if(apiResult.info.queueId === 440){
+        //     type = 'flex';
+        //     await Champ.addToFlex(summonerId,playerInfo.championId,playerInfo.championName,outcome,playerInfo.timePlayed,
+        //         cs,playerInfo.kills,playerInfo.deaths,playerInfo.assists)
+        // }
+         if(apiResult.info.queueId === 420){
             type = 'solo';
+            const testForChamp = await Champ.get(summonerId,playerInfo.championId,'solo')
+            let alreadyExists = testForChamp ? true : false; 
             await Champ.addToSolo(summonerId,playerInfo.championId,playerInfo.championName,outcome,playerInfo.timePlayed,
-                cs,playerInfo.kills,playerInfo.deaths,playerInfo.assists)
+                cs,playerInfo.kills,playerInfo.deaths,playerInfo.assists,alreadyExists)
         } 
-        else{
-            let selectedInfo = [{queueId:apiResult.info.queueId,
-                gameCreation:apiResult.info.gameCreation,
-                platformId:apiResult.info.platformId,
-                teams:[
-                   {win:apiResult.info.teams[0].win,
-                   teamId:apiResult.info.teams[0].teamId,
-                   objectives:apiResult.info.teams[0].objectives},
-                   {win:apiResult.info.teams[1].win,
-                   teamId:apiResult.info.teams[1].teamId,
-                   objectives:apiResult.info.teams[1].objectives}
-                ]}];
-            let participants = []
-            apiResult.info.participants.forEach(obj => {
-            let selectedData = {
-            puuid: obj.puuid,
-            kills: obj.kills,
-            deaths: obj.deaths,
-            champlevel: obj.champlevel,
-            championId: obj.championId,
-            championName:obj.championName,
-            assists:obj.assists,
-            totalMinionsKilled:obj.totalMinionsKilled,
-            totalAllyJungleMinionsKilled:obj.totalAllyJungleMinionsKilled,
-            totalEnemyJungleMinionsKilled:obj.totalEnemyJungleMinionsKilled,
-            lane:obj.lane,
-            pentaKills:obj.pentaKills,
-            role:obj.role,
-            summonerName:obj.summonerName,
-            teamPosition:obj.teamPosition,
-            timePlayed:obj.timePlayed,
-            win:obj.win,
-             goldSpent:obj.goldSpent,
-             item0:obj.item0,
-             item1:obj.item1,
-            item2:obj.item2,
-            item3:obj.item3,
-            item4:obj.item4,
-            item5:obj.item5,
-            item6:obj.item6,
-            totalDamageDealtToChampions:obj.totalDamageDealtToChampions,
-            totalDamageTaken:obj.totalDamageTaken,
-            gameCreation:obj.gameCreation,
-            gameId:obj.gameId,
-            wardsPlaced:obj.wardsPlaced,
-            rune1:obj.perks.styles[0].style,
-            rune2:obj.perks.styles[1].style,
-            summoner1Id:obj.summoner1Id,
-            summoner2Id:obj.summoner2Id,
-            teamId:obj.teamId
-            };
-            participants.push(selectedData);
-            });
-            participants = {participants}
-            selectedInfo.push(participants)
-            selectedInfo = JSON.stringify(selectedInfo)
-           
-           const total = await db.query(
-            `INSERT INTO player_total_matches
-                (match_id,summoner_id,match_date,match_details) 
-                VALUES
-                ($1,$2,$3,$4)
-                RETURNING
-                match_id AS "matchId", summoner_id AS "summonerId", match_date AS "matchDate", match_details AS "matchDetails"`,
-                [apiResult.metadata.matchId,summonerId,null,selectedInfo]
-            );
-        return total.rows[0]; 
-        } 
+        //get sought after info from the match details, lot of unwanted info given by riot api
         let meta = apiResult.info
         let selectedInfo = [{queueId:meta.queueId,
                              platformId:meta.platformId,

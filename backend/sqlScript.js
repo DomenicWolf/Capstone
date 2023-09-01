@@ -8,8 +8,8 @@ async function champScript() {
     const champs = Object.keys(data.data);
     for (let champ of champs) {
         //console.log(`${url}${champ}.png`)
-        console.log(champ)
-        db.query(
+        
+        await db.query(
             `INSERT INTO champs (champ_id, champ_name, champ_icon)
             VALUES
             ('${data.data[champ].key}', '${champ}', '${url}${champ}.png')`
@@ -41,7 +41,7 @@ async function itemsScript() {
       
        
 
-        db.query(
+        await db.query(
             `INSERT INTO items (item_id, item_name, item_icon,item_gold,item_desc)
             VALUES
             ($1,$2,$3,$4,$5)`,
@@ -75,7 +75,7 @@ async function runeScript() {
         }else {
             number = 7204
         }
-        db.query(
+        await db.query(
             `INSERT INTO runes (rune_id,rune_name,rune_icon,rune_icon_number)
             VALUES
             ($1,$2,$3,$4)`,
@@ -94,7 +94,7 @@ async function summonerSpellScript() {
     const items = Object.keys(data);
 
     for(let item of items){
-        db.query(
+        await db.query(
             `INSERT INTO sum_spells (sum_id,sum_name,sum_icon,sum_desc)
             VALUES
             ($1,$2,$3,$4)`,
@@ -113,7 +113,7 @@ async function profileScript() {
     const items = Object.keys(data);
 
     for(let item of items){
-        db.query(
+        await db.query(
             `INSERT INTO profile_icons (profile_id,profile_icon)
             VALUES
             ($1,$2)`,
@@ -130,7 +130,7 @@ async function rankScript() {
     const ranks = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
     const url = 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-';
     for(let rank of ranks){
-        db.query(
+        await db.query(
             `INSERT INTO rank_icons (rank_name,rank_icon)
             VALUES
             ($1,$2)`,
