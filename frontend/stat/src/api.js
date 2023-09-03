@@ -3,13 +3,7 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 const API_KEY = process.env.REACT_APP_API_KEY
  
-const headers = {
-            "X-Riot-Token": 'RGAPI-c8c43ee7-dfef-44b8-a20c-8446fed4a512',
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, PUT, DELETE, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range",
-            "Access-Control-Expose-Headers": "Content-Length,Content-Range"
-            }
+
 class StatApi {
     static async getLolPlayerData(playerName){
         

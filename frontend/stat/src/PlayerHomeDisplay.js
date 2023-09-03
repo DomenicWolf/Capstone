@@ -39,8 +39,8 @@ const PlayerHomeDisplay = ({player}) => {
             <div className='player-leader-main'>
 
             
-            <h1><img className='icon-leader'src={`${iconUrl}${profileIcon}.png`} height={90} width={90}/> {player.summonerName}</h1>
-            <h1>{player.leaguePoints} LP</h1>
+            <p className='lol-home-name'><img className='icon-leader'src={`${iconUrl}${profileIcon}.png`} height={90} width={90}/> {player.summonerName}</p>
+            <p className='lol-home-lp'>{player.leaguePoints} LP</p>
             <div className='d-flex justify-content-around'>
                 <p className='test'>Wins:</p>
                 <p className='test'>Losses:</p>

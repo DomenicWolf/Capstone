@@ -71,13 +71,13 @@ const LolPlayerPage = () => {
                             <div className='player-rank-container'>
                                 <img src={player[1].rank_icon} className='player-rank-img'></img>
                             </div>
-                            <h1>{player[1].rank_name? capitalizeFirstLetter(player[1].rank_name) : 'unranked'} {player[3].player.solo.rank}</h1>
-                            <h2 className='player-page-text'>{player[3].player.solo.lp} LP</h2>
+                            <p className='lol-player-rank'>{player[1].rank_name? capitalizeFirstLetter(player[1].rank_name) : 'unranked'} {player[3].player.solo.rank}</p>
+                            <p className='player-page-text'>{player[3].player.solo.lp} LP</p>
                             <div className='container d-flex justify-content-around'>
 
                             </div>
                             <div className='container d-flex justify-content-around rank-bottom mb-1'>
-                                <h3 className={wrColor}>{wr !== 'NaN' ? `${wr}%` : ''} ({player[3].player.solo.wins}W {player[3].player.solo.losses}L)</h3>
+                                <p className={`${wrColor} lol-player-wr`}>{wr !== 'NaN' ? `${wr}%` : ''} ({player[3].player.solo.wins}W {player[3].player.solo.losses}L)</p>
                             </div>
                             <button className='btn btn-update'>Update</button>
                         </div>
