@@ -35,7 +35,7 @@ const NavBar = () => {
             alert()
             console.error(e)
         }
-        return navigate(`/lol?name=${encodeURIComponent(playerName)}`);
+        return navigate(`/lol-player-page?name=${encodeURIComponent(playerName)}`);
     }
     return (
         <div>
@@ -43,18 +43,19 @@ const NavBar = () => {
         
         <nav className="navbar block" style={{ backgroundColor: "whitesmoke" }} >
             <div className="container-fluid d-flex justify-content ">
-                <a className="navbar-brand" href="#"><img src={TrueStat} height={100}></img></a>
-                {location.pathname  !== '/' ? 
-                <form className="d-flex justify-content-start" role="search" onSubmit={handleSubmit}>
+                <a className="navbar-brand" href="/"><img src={TrueStat} height={100}></img></a>
+                {location.pathname.includes('lol-player-page')? 
+                <form className="d-flex justify-content-start nav-search" role="search" onSubmit={handleSubmit}>
                     <input className="form-control me-2 pe-5 nav-form" type="search" placeholder="Search for player..." aria-label="Search" value={formData.playerName} name='playerName' onChange={handleChange}/>
-                    <button className="btn btn-outline-dark" type="submit">Search</button>
+                    <button className="btn btn-outline-dark nav-search-button" type="submit">Search</button>
                 </form>
                 :
-                ''}
+                ''
+                }
                 <div className="justify-content text-start">
                 <ul className="nav">
                     <li className="nav-item btn btn-purple btn-xs me-2 p-1">
-                        <a className="nav-link p-1" href="/"><img src={lol} height={20} width={40}/>League Of Legends</a>
+                        <a className="nav-link p-1" href="/lol-home"><img src={lol} height={20} width={40}/>League Of Legends</a>
                     </li>
                     <li className="nav-item  btn btn-purple btn-xs me-2">
                         <a className="nav-link p-0" href="/"><img src={tft} height={32} width={35}/>Teamfight Tactics</a>

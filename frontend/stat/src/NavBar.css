@@ -30,3 +30,11 @@
       width: 200px;
     }
   }
+
+ .nav-search-button:hover{
+    background-color: #332030 ;
+}
+
+.nav-search-button{
+    border-color: #332030 ;
+}

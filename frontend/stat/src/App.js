@@ -3,11 +3,12 @@ import './App.css';
 
 import {Routes,BrowserRouter,Route} from 'react-router-dom'
 import NavBar from './NavBar';
-import Home from './Home';
+import LolHome from './LolHome';
 import { useState } from 'react';
 import LolPlayerPage from './LolPlayerPage';
 import Test from './Test';
 import { useLocation } from 'react-router-dom';
+import Home from './Home';
 
 
 
@@ -24,8 +25,9 @@ function App() {
         <NavBar ></NavBar>
         <main>
           <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/lol' element={<LolPlayerPage/>}/>
+            <Route path='/' element={<Home/>} />
+            <Route path='/lol-home' element={<LolHome/>}/>
+            <Route path='/lol-player-page' element={<LolPlayerPage/>}/>
            
             <Route path='/test' element={<Test></Test>}/>
           </Routes>

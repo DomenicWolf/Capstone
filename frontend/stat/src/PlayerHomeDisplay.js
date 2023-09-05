@@ -40,7 +40,7 @@ const PlayerHomeDisplay = ({player}) => {
 
             
             <p className='lol-home-name'><img className='icon-leader'src={`${iconUrl}${profileIcon}.png`} height={90} width={90}/> {player.summonerName}</p>
-            <p className='lol-home-lp'>{player.leaguePoints} LP</p>
+            <p className='lol-home-lp'>{player.leaguePoints} League Points</p>
             <div className='d-flex justify-content-around'>
                 <p className='test'>Wins:</p>
                 <p className='test'>Losses:</p>

@@ -165,7 +165,7 @@ const LolMatchesbar = ({match,puuid}) => {
                     {team1.map((p) => (
                         <div className='container participants d-flex mb-1'>
                             <img className='match-bar-team-img me-0'src={`https://ddragon.leagueoflegends.com/cdn/13.15.1/img/champion/${p.championName}.png`}></img>
-                            <a className='mt-1 participant-name mb-2' href={`/lol?name=${p.summonerName}`}>{p.summonerName}</a>
+                            <a className='mt-1 participant-name mb-2' href={`/lol-player-page?name=${p.summonerName}`}>{p.summonerName}</a>
                         </div>
                     ))}
                      
