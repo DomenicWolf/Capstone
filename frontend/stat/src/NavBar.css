@@ -1,14 +1,14 @@
 .nav-link  {
-    color:rgb(255, 255, 255);
+    color:rgb(213, 203, 214);
 }
 
 .nav-link:hover {
     cursor: pointer;
-    color:rgb(255, 255, 255);
+    color:rgb(213, 203, 214);
 }
 
 .btn-purple {
-    background-color: #332030;
+    background-color: #201625;
 }
 
 .btn-purple:hover {

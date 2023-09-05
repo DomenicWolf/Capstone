@@ -99,7 +99,7 @@
     padding-bottom: 2rem;
     border-radius: 12px; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    color: #f8f3fd;
+    color: rgb(213, 203, 214);
      
 }
 
@@ -111,12 +111,12 @@
 
 
 .home-desc {
-    color: #f8f3fd;
+    color: rgb(213, 203, 214);
     font-size: 4rem;
 }
 
 .home-desc-2{
-    color: #f8f3fd;
+    color: rgb(213, 203, 214);
     font-size: 4rem;
     background-color: #46245a;
 }

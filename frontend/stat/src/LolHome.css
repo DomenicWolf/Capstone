@@ -35,7 +35,7 @@
 
 
 .section-container {
-    background-color: #332030; 
+    background-color: #201625; 
    
     border-radius: 10px; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
@@ -121,7 +121,7 @@ input::webkit-input-placeholder {
 
 
 .lol-home-leaderboard-title-container{
-    background-color: #332030; 
+    background-color: #261c29; 
    
     border-radius: 20px; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
