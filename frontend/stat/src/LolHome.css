@@ -209,14 +209,87 @@ input::webkit-input-placeholder {
 }
 
 
-@media (max-width: 1200px){
+
+@media (max-width: 2340px){
     .teemo-1 {
         height: 8rem;
         width: 10rem;
         /* margin-right: 100rem; */
        display: inline;
       margin-right: 50rem;
-      margin-bottom: -6rem;
+      margin-bottom: -.5rem;
+    }
+
+    .truestat-logo{
+        margin-bottom: -1rem;
+        margin-right: 6rem;
+    }
+
+}
+
+@media (max-width: 1700px){
+    .teemo-1 {
+        height: 8rem;
+        width: 10rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 45rem;
+      margin-bottom: -.5rem;
+    }
+
+    .truestat-logo{
+        margin-bottom: -1rem;
+        margin-right: 5rem;
+    }
+
+}
+
+@media (max-width: 1500px){
+    .teemo-1 {
+        height: 8rem;
+        width: 10rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 40rem;
+      margin-bottom: -.5rem;
+    }
+
+    .truestat-logo{
+        margin-bottom: -1rem;
+        margin-right: 5rem;
+    }
+
+}
+
+
+@media (max-width: 1350px){
+    .teemo-1 {
+        height: 8rem;
+        width: 10rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 35rem;
+      margin-bottom: -.5rem;
+    }
+
+    .truestat-logo{
+        margin-bottom: -1rem;
+        margin-right: 5rem;
+    }
+
+}
+
+
+
+
+@media (max-width: 1200px){
+    .teemo-1 {
+        height: 8rem;
+        width: 10rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 25rem;
+      margin-bottom: -.5em;
     }
     
     
@@ -235,6 +308,21 @@ input::webkit-input-placeholder {
 }
 
 @media (max-width: 1000px){
+
+    .teemo-1 {
+        height: 8rem;
+        width: 10rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 25rem;
+      margin-bottom: -6.8em;
+    }
+
+    .truestat-logo{
+        margin-bottom: 0rem;
+    }
+
+
     .lol-home-name{
         font-size: .7rem !important;
     }

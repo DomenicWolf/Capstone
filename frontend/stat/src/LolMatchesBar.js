@@ -8,7 +8,6 @@ import { useState } from 'react';
 import ExpandLolMatch from './ExpandLolMatch';
 
 const LolMatchesbar = ({match,puuid}) => {
-    console.log(match)
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
 
     const toggleAdditionalInfo = () => {
@@ -34,7 +33,6 @@ const LolMatchesbar = ({match,puuid}) => {
     const runes = {'8000':r8000,'8100':rune8100,'8200':rune8200,'8300':rune8300,'8400':rune8400}
     const rune1 = player.rune1.toString()
     const rune2 = player.rune2.toString()
-    console.log(player,999)
     const test = [...match.matchDetails[1].participants]
     const team1 = test.splice(0,5)
     const team2 = test.splice(0,5)

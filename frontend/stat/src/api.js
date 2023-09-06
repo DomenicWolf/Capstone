@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = "https://truestat.onrender.com" ;
 const API_KEY = process.env.REACT_APP_API_KEY
  
 
@@ -44,6 +44,7 @@ class StatApi {
             const result = await fetchData()
             const champs = await axios.get(champsUrl)
             result.push(champs.data)
+            console.log(player.data.id,888)
             return result
         }catch(e){
             console.debug(e)

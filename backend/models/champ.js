@@ -62,7 +62,7 @@ class Champ {
         let gamesPlayed;
         let newCs;
         let newTimePlayed;
-        let kda = (kills+assists)/deaths;
+        let kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         
         if(champ){
             
@@ -73,7 +73,7 @@ class Champ {
             kills = champ.kills + kills;
             deaths = champ.deaths + deaths;
             assists = champ.assists + assists;
-            kda = (kills + assists) / deaths
+            kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         }
         
         let type;
@@ -153,7 +153,8 @@ class Champ {
                 kills = champ.kills + kills;
                 deaths = champ.deaths + deaths;
                 assists = champ.assists + assists;
-                kda = (kills + assists) / deaths
+                kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
+                
                 if(outcome === 'win'){
                     type = 'won';
                     console.log(champ)
@@ -217,7 +218,7 @@ class Champ {
         let gamesPlayed;
         let newCs;
         let newTimePlayed;
-        let kda = (kills+assists)/deaths;
+        let kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         if(champ){
             alreadyExists = true;
             gamesPlayed = champ.gamesPlayed + 1;
@@ -226,7 +227,7 @@ class Champ {
             kills = champ.kills + kills;
             deaths = champ.deaths + deaths;
             assists = champ.assists + assists;
-            kda = (kills+assists)/deaths;
+            kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         }
         
         let type;
@@ -302,7 +303,7 @@ class Champ {
         let gamesPlayed;
         let newCs;
         let newTimePlayed;
-        let kda = (kills+assists)/deaths;
+        let kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         if(champ){
             alreadyExists = true;
             gamesPlayed = champ.gamesPlayed + 1;
@@ -311,7 +312,7 @@ class Champ {
             kills = champ.kills + kills;
             deaths = champ.deaths + deaths;
             assists = champ.assists + assists;
-            kda = (kills+assists)/deaths;
+            kda = deaths === 0 ? kills+assists : (kills + assists) / deaths
         }
         
         let type;
