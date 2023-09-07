@@ -38,3 +38,22 @@
 .nav-search-button{
     border-color: #332030 ;
 }
+
+.ml-auto{
+    margin-left: auto;
+}
+
+@media (max-width: 800px) {
+    .navbar-nav{
+        display: flex;
+  align-items: center; /* Vertically center items */
+  list-style-type: none; /* Remove list-style */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+    }
+    .nav-item{
+        display: inline;
+    }
+    
+  }
+

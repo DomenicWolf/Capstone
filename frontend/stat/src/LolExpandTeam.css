@@ -156,3 +156,13 @@
 .expand-top-cs{
     margin-right: 2rem;
 }
+
+@media  (max-width:800px){
+    .decorative-lol-expand{
+        height: .2rem;
+        width: 100%;
+    }
+    .expand-top-info{
+       display: none;
+    }
+}

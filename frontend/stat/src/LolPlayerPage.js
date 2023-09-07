@@ -17,7 +17,8 @@ const LolPlayerPage = () => {
     const playerName = queryParams.get('name');
     let topThree;
     let champs;
-   console.log(topThree,1111,topThree != null)
+   console.log(player ===429,3453454)
+   console.log(player)
   
     
     useEffect(() => {
@@ -29,7 +30,7 @@ const LolPlayerPage = () => {
         getPlayerInfo(playerName);
         
     },[playerName])
-    if(player && player !== 404){
+    if(player && player !== 404 && player !== 429 ){
             
             champs = player[4]
             const sorted = champs.sort((a,b) =>  (  Number(b.wr)-Number(a.wr)   )  ) ;
@@ -41,7 +42,7 @@ const LolPlayerPage = () => {
 
    
 
-    let wr = player && player !== 404 ? (player[3].player.solo.wins/(player[3].player.solo.wins + player[3].player.solo.losses)*100).toFixed(1) : '';
+    let wr = player && player !== 404 && player !== 429 ? (player[3].player.solo.wins/(player[3].player.solo.wins + player[3].player.solo.losses)*100).toFixed(1) : '';
     let wrColor;
     
     if(wr >= 75) wrColor = 'green';
@@ -52,7 +53,7 @@ const LolPlayerPage = () => {
    
     return (
         <div className='container-fluid container-sm'>
-            {player && player !== 404  ? 
+            {player && player !== 404  && player !== 429? 
             <div>
                 <div className='row'>
                     <div className='col-md-3'>
@@ -108,6 +109,13 @@ const LolPlayerPage = () => {
             {player === 404 ? 
                 <div className='container text-center'>
                     <h1>PLAYER NOT FOUND!</h1>
+                </div>
+                 :
+                ''
+                  }
+             {player === 429 ? 
+                <div className='container text-center'>
+                    <h1>Too many requests, please wait and then try again.</h1>
                 </div>
                  :
                 ''

@@ -44,10 +44,11 @@ class StatApi {
             const result = await fetchData()
             const champs = await axios.get(champsUrl)
             result.push(champs.data)
-            console.log(player.data.id,888)
+          
             return result
         }catch(e){
             console.debug(e)
+            return 429
         }
         
     }

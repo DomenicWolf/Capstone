@@ -136,4 +136,51 @@
   }
 
 
+  @media (max-width:1200px){
+    .home-games-img{
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      margin: .2rem;
+      padding: 1rem;
+      justify-content: center;
+    }
+    .home-games-img div{
+     margin: 1rem;
+    }
+    .home-lol-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-apex-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-cs-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-destiny-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-halo-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-valorant-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-rl-img{
+      width: 7rem; 
+      height: 7rem;
+    }
+    .home-tft-img{
+      width: 7rem; 
+      height:7rem;
+    }
+  }
+
+
 

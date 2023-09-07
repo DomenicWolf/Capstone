@@ -49,7 +49,7 @@ const LolExpandTeam = ({team,runes,obj,minutes}) => {
                             <div className='d-flex '>
                                 <div className='row me-0'>
 
-                                    <div className='col-sm-1 mt-2'>
+                                    <div className='col-sm-1 mt-2 lol-expand-top-info'>
                                         <img  className='expand-champ-img' src={`https://ddragon.leagueoflegends.com/cdn/13.15.1/img/champion/${p.championName === 'FiddleSticks' ? 'Fiddlesticks' : p.championName}.png`} ></img>
                                     </div>
 

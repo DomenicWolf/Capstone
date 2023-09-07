@@ -34,6 +34,7 @@ const LolChampDisplaySide = ({champ}) => {
           return fixedNumber;
         }
       }
+      console.log(champ)
     return  (
         <div className='container  d-flex justify-content-around champ-side-container pt-2'>
             <div className='champ-side-img-container'>
@@ -46,7 +47,7 @@ const LolChampDisplaySide = ({champ}) => {
            
             <div>  
                 <h5 className='champ-display-side-text mb-1'>{formatNumber(champ.kills/champ.gamesPlayed,1)}/{formatNumber(champ.deaths/champ.gamesPlayed,1)}/{formatNumber(champ.assists/champ.gamesPlayed,1)}</h5>
-                <h5 className={`champ-display-side-text mt- ${kdaColor}`}>{((champ.kills+champ.assists)/(champ.deaths === 0 ? 1 : champ.deaths)).toFixed(1) !== 'NaN' ? ((champ.kills+champ.assists)/champ.deaths).toFixed(1) : 0} KDA</h5>
+                <h5 className={`champ-display-side-text mt- ${kdaColor}`}>{((champ.kills+champ.assists)/(champ.deaths === 0 ? 1 : champ.deaths)).toFixed(1) !== 'NaN' ? ((champ.kills+champ.assists)/(champ.deaths === 0 ? 1 : champ.deaths)).toFixed(1) : 0} KDA</h5>
             </div>
             <div>
                 <h5 className='champ-display-side-text mb-1'>{champ.gamesWon}W {champ.gamesLost}L</h5>

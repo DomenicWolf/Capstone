@@ -84,11 +84,11 @@ const LolHome = () => {
                 
                 <img className='truestat-logo' src={pic} height={100}></img>
             </div>
-         <div className='section-container container   search-form-container'>
+         <div className='section-container container  pt-4 search-form-container'>
            
-            <form className='content-container pt-5 search-form-container' onSubmit={handleSubmit}>
+            <form className='  search-form-container form-container' onSubmit={handleSubmit}>
                 <div className="container d-flex search-form-container" >
-                    <label><img height={30} width={60} src={lol}/></label>
+                    <label><img height={30} width={60} src={lol} className='lol-logo-home'/></label>
                     {/* <span className="input-group-text input search-form" id="inputGroup-sizing-sm input "><img height={30} width={60} src={lol}/></span> */}
                     <input type="text" className="form-control  form-control whitesmoke form-focus search-form " placeholder="  Search for Summoner..." value={formData.playerName} name='playerName' onChange={handleChange}/>
                     

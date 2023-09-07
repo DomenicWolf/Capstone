@@ -336,3 +336,108 @@ input::webkit-input-placeholder {
         width: 2rem;
     }
 }
+
+
+@media (max-width: 700px){
+
+    .section-container{
+        padding: -3rem;
+    }
+
+
+    .form-container{
+        margin: 0;
+    }
+
+    .teemo-1 {
+        height: 6rem;
+        width: 8rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 10rem;
+      margin-bottom: -.5em;
+    }
+
+    .truestat-logo{
+        margin-bottom: 0rem;
+        height: 4rem;
+        width: 5rem;
+        margin-right: 0rem;
+    }
+
+
+    .lol-home-name{
+        font-size: .7rem !important;
+    }
+
+    .lol-home-lp{
+        font-size: .7rem !important;
+    }
+
+    .icon-leader{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .test{
+        font-size: .5rem;
+    }
+}
+
+
+
+@media (max-width: 500px){
+
+    .section-container{
+        padding: -3rem;
+    }
+
+    .search-form-container{
+        padding-left: 0rem;
+        padding-right: .2rem;
+    }
+
+    .form-container{
+        margin: 0;
+    }
+
+    .teemo-1 {
+        height: 4rem;
+        width: 6rem;
+        /* margin-right: 100rem; */
+       display: inline;
+      margin-right: 10rem;
+      margin-bottom: -.5em;
+    }
+
+    .truestat-logo{
+        margin-bottom: 0rem;
+        height: 4rem;
+        width: 4rem;
+        margin-right: 0rem;
+    }
+
+
+    .lol-home-name{
+        font-size: .7rem !important;
+    }
+
+    .lol-home-lp{
+        font-size: .7rem !important;
+    }
+
+    .icon-leader{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .test{
+        font-size: .5rem;
+    }
+
+    .lol-logo-home{
+        margin-top: .5rem;
+        height: 1rem;
+        width: 2rem;
+    }
+}

@@ -221,3 +221,27 @@
 .item-container {
   margin-left: 1rem;
 }
+
+@media (max-width: 800px){
+  .sum-container{
+    display: none;
+    text-align: center;
+    
+    justify-content: center;
+  }
+
+  .match-box-champ-img{
+    margin-left: 10.5rem;
+  }
+
+  .item-container{
+    margin-left: 7rem;
+  }
+
+  .first-col{
+    margin-left: 2rem;
+  }
+  .lol-damage{
+    display: none;
+  }
+}
