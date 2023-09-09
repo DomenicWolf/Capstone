@@ -183,4 +183,26 @@
   }
 
 
+  .banner {
+    position: absolute;
+  top: 8px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+    background-color: rgba(33, 27, 41, 0.8); 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
+
+  .image-container{
+    position: relative;
+    display: inline-block;
+  }
+
+
+  @media  (max-width:2600px){
+    .home-games-img{
+      padding: 2rem;
+    }
+  }
 

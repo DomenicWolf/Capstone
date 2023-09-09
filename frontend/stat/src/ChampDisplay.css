@@ -6,3 +6,20 @@
 .champ-img {
     border-radius: 15px;
 }
+
+@media (max-width:991px){
+    .lol-player-rank{
+      font-size: 1rem;
+    }
+    .lol-player-wr{
+      font-size: .8rem;
+    }
+   
+    .lol-topthree{
+        font-size: 1rem;
+    }
+
+    .lol-top-three-color{
+        font-size: 1rem;
+    }
+  }

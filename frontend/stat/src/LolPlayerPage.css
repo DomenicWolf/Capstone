@@ -133,3 +133,14 @@
   font-size: 1.5rem;
   margin-bottom: 4px;
 }
+
+@media (max-width:991px){
+  .lol-player-rank{
+    font-size: 1rem;
+  }
+  .lol-player-wr{
+    font-size: .8rem;
+  }
+ 
+
+}

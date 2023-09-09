@@ -98,19 +98,19 @@ const LolMatchesbar = ({match,puuid}) => {
                 
                 
                 <div className="container match-img-container sum-container">
-                    <div className="row ">
-                        <div className="col-md-1">
+                    <div className="row flex-nowrap row-container">
+                        <div className="col-md-1 col-sm-6">
                             <img className="sum-img" src={`${sumSpellUrl}${sum1}.png`} alt="Summoner Spell 1" />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-sm-6">
                             <img className="sum-img" src={`${sumSpellUrl}${sum2}.png`} alt="Summoner Spell 2" />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-1">
+                    <div className="row flex-nowrap row-container">
+                        <div className="col-md-1 col-sm-6">
                             <img className="rune-img" src={runes[rune1]} alt="Rune 1" />
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-1 col-sm-6">
                             <img className="rune-img" src={runes[rune2]} alt="Rune 2" />
                         </div>
                     </div>
@@ -131,7 +131,7 @@ const LolMatchesbar = ({match,puuid}) => {
                     
                 </div>
 
-                <div className='col-md-1'>
+                <div className='col-md-1 deco'>
                     
                     <div className='decorative-lol-match-2'>
                         

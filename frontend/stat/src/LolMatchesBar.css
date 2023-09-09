@@ -245,3 +245,57 @@
     display: none;
   }
 }
+
+@media (max-width:1400px){
+  .match-kda{
+    font-size: .7rem;
+  }
+  .match-kda-calc{
+    font-size: .7rem;
+  }
+  .vision-score{
+    font-size: .7rem;
+  }
+  .lol-damage{
+    font-size: .8rem;
+  }
+  .deco{
+    padding: 0;
+  }
+  .decorative-lol-match-2{
+    width: .2rem;
+  }
+}
+
+@media (max-width:1200px){
+  .match-img-container{
+    padding: 0;
+  }
+  .match-cs{
+    font-size: .6rem;
+  }
+  .match-box-champ-img{
+    height: 3rem;
+    width: 3rem;
+  }
+  .item-container{
+    
+  }
+  .participants{
+    width: 8rem;
+  }
+  .participant-name{
+    font-size: .59rem;
+  }
+  .match-info{
+    padding-left: 0;
+  }
+  .match-box{
+    padding-right: 0;
+  }
+}
+
+@media (max-width:991px){
+  
+  
+}

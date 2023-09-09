@@ -28,13 +28,13 @@ const ChampDisplay = ({champ}) => {
             <div className="row">
                 <div className="col-md-6 champ-img-container pe-0">
                     <img className='champ-img img-fluid' src={champ.champIcon} alt="Champion Icon" />
-                    <h2 className='player-page-text'>{extractedWord === 'MonkeyKing' ? 'Wukong' : extractedWord}</h2>
+                    <h2 className='player-page-text lol-topthree'>{extractedWord === 'MonkeyKing' ? 'Wukong' : extractedWord}</h2>
                 </div>
         
                 <div className="col-md-6">
-                    <h2 className="player-page-text">{champ.gamesWon}W</h2>
-                    <h2 className='player-page-text'>{champ.gamesLost}L</h2>
-                    <h2 className={wrColor}>{wr}%</h2>
+                    <h2 className="player-page-text lol-topthree">{champ.gamesWon}W</h2>
+                    <h2 className='player-page-text lol-topthree'>{champ.gamesLost}L</h2>
+                    <h2 className={`${wrColor} lol-top-three-color`}>{wr}%</h2>
                 </div>
             </div>
         </div>
