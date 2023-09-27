@@ -64,17 +64,17 @@ const NavBar = () => {
                 </button>
                 <div className={`collapse navbar-collapse text-align-end ${showMenu ? 'show' : ''}`} id="navbarNav">
                 <ul className="nav navbar-nav ml-auto d-flex">
-                    <li className="nav-item btn btn-purple btn-xs me-2 p-1">
+                    <li className="nav-item  ">
                         <a className="nav-link p-1" href="/lol-home"><img src={lol} height={20} width={40}/>League Of Legends</a>
                     </li>
-                    <li className="nav-item  btn btn-purple btn-xs me-2">
-                        <a className="nav-link p-0" href="/"><img src={tft} height={32} width={35}/>Teamfight Tactics</a>
+                    <li className="nav-item mt-1 tft-nav-container">
+                        <a className="nav-link p-0" href="/"><img src={tft} height={25} width={28}/>Teamfight Tactics</a>
                     </li>
-                    <li className="nav-item btn btn-purple btn-xs me-2 pl-0 ps-0">
-                        <a className="nav-link p-0" href="/"><img src={val} height={30} width={40}/>Valorant</a>
+                    <li className="nav-item  val-nav-container">
+                        <a className="nav-link p-0" href="/"><img src={val} className="val-nav" height={30} width={40}/>Valorant</a>
                     </li>
-                    <li className="nav-item btn btn-purple btn-xs me-2 ps-0">
-                        <a className="nav-link p-0" href="/"><img src={destiny} height={30} width={40}/>Destiny 2</a>
+                    <li className="nav-item  destiny-nav-container">
+                        <a className="nav-link p-0 pl-1" href="/"><img className='destiny-nav'src={`https://www.nicepng.com/png/detail/145-1456956_destiny-logo-png-image-royalty-free-stock-destiny.png`} height={15} width={15}/>Destiny 2</a>
                     </li>
                 </ul>
                 </div>

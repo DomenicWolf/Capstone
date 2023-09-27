@@ -104,19 +104,19 @@ const LolHome = () => {
           
             
             <div className='container lol-home-container-title d-flex justfiy-content-between '>
-                <div className='lol-home-leaderboard-title-container '>
+                <div className='lol-home-leaderboard-title-container na-1'>
                     <p className='lol-home-leaderboard-title'>North America</p>
                 </div>
-                <div className='lol-home-leaderboard-title-container '>
+                <div className='lol-home-leaderboard-title-container na-0'>
                     <p className='lol-home-leaderboard-title'>North America</p>
                 </div>
-                <div className='lol-home-leaderboard-title-container '>
+                <div className='lol-home-leaderboard-title-container na-0'>
                     <p className='lol-home-leaderboard-title'>North America</p>
                 </div>
                 
             </div>
            
-          <div className='container d-flex justify-content content-container text-center mt-0'>
+          <div className='container d-flex justify-content content-container text-center mt-0 top-3-container'>
           
            {topThree.map((player) => (
             

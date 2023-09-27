@@ -1,5 +1,6 @@
 .nav-link  {
-    color:rgb(213, 203, 214);
+    color:rgb(50, 40, 51);
+    font-size: 1.2rem;
 }
 
 .nav-link:hover {
@@ -57,3 +58,31 @@
     
   }
 
+  .pl-1{
+    margin-left: .5rem;
+    
+  }
+
+  .destiny-nav{
+    margin-right: .3rem;
+  }
+
+
+  .val-nav{
+    margin-right: -.4rem;
+  }
+
+  .val-nav-container{
+    margin-top: .18rem;
+    margin-left: .6rem;
+  }
+
+
+  .destiny-nav-container{
+    margin-top: .18rem;
+    margin-left: .6rem
+  }
+
+  .tft-nav-container{
+    margin-left: .6rem;
+  }

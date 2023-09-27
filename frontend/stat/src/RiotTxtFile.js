@@ -1,8 +1,8 @@
 import React from 'react';
-import riotTxtContent from './riot.txt'; // Import the text file
+// import riotTxtContent from './riot.txt'; // Import the text file
 
 function RiotTxtContent() {
-    console.log(riotTxtContent)
+   
   return (
     <div>
       <h1>Riot.txt Content</h1>

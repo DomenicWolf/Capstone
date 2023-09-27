@@ -102,7 +102,7 @@ const LolMatchesbar = ({match,puuid}) => {
                         <div className="col-md-1 col-sm-6">
                             <img className="sum-img" src={`${sumSpellUrl}${sum1}.png`} alt="Summoner Spell 1" />
                         </div>
-                        <div className="col-md-2 col-sm-6">
+                        <div className="col-md-2 col-sm-6 last-spells">
                             <img className="sum-img" src={`${sumSpellUrl}${sum2}.png`} alt="Summoner Spell 2" />
                         </div>
                     </div>
@@ -110,22 +110,22 @@ const LolMatchesbar = ({match,puuid}) => {
                         <div className="col-md-1 col-sm-6">
                             <img className="rune-img" src={runes[rune1]} alt="Rune 1" />
                         </div>
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-1 col-sm-6 last-spells">
                             <img className="rune-img" src={runes[rune2]} alt="Rune 2" />
                         </div>
                     </div>
                 </div>
                 
                 </div>
-                <div className='col-lg-4 d-flex flex-column justify-content-around text-center'>
+                <div className='col-lg-4 d-flex flex-column justify-content-around text-center content-match'>
                     <div className='match-kda container '>
                         <p className='match-kda '>{player.kills}/{player.deaths}/{player.assists}</p>
                         <p className={`match-kda-calc ${kdaColor}`}>  {((player.kills+player.assists)/(player.deaths === 0 ? 1 : player.deaths)).toFixed(1)}KDA</p>
                     </div>
-                    <div className='container'>
+                    <div className='container cs-co'>
                          <p className={`match-cs ${csColor}`}>{cs}({(cs/minutes).toFixed(1)}) CS</p>
                     </div>
-                    <div className='container mt-1'>
+                    <div className='container mt-1 vision-co'>
                         <p className='vision-score'>{`Vision: ${player.visionScore}`} </p>
                     </div>
                     
@@ -138,8 +138,8 @@ const LolMatchesbar = ({match,puuid}) => {
                     </div>
                 </div>
 
-                <div className='col-lg-4'>
-                    <div className='container text-center'>
+                <div className='col-lg-4 '>
+                    <div className='container text-center damage-co'>
                         <p className='lol-damage  mb-1'>Damage</p>
                         <p className='lol-damage given mb-1'>Dealt: {player.totalDamageDealtToChampions}</p>
                        <p className=' lol-damage taken'>Recieved: {player.totalDamageTaken}</p>

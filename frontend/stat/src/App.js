@@ -28,7 +28,7 @@ function App() {
             <Route path='/' element={<Home/>} />
             <Route path='/lol-home' element={<LolHome/>}/>
             <Route path='/lol-player-page' element={<LolPlayerPage/>}/>
-            <Route path='//riot.txt' element={<RiotTxtContent></RiotTxtContent>}/>
+            <Route path="/%2F%2Friot.txt" element={<RiotTxtContent></RiotTxtContent>}/>
             <Route path='/test' element={<Test></Test>}/>
           </Routes>
         </main>

@@ -67,7 +67,7 @@ h1 {
     
 }
 .search-form-container {
-    border-radius: 1.6rem;
+    /* border-radius: 1.6rem; */
     padding-left: 0;
     padding-right: 1rem;
     max-width: 49vw;
@@ -386,15 +386,23 @@ input::webkit-input-placeholder {
 
 
 
-@media (max-width: 500px){
+@media (max-width: 600px){
 
     .section-container{
-        padding: -3rem;
+        /* padding: -3rem; */
+        background: none;
+        
+    }
+
+    .search-form{}
+
+    .lol-logo-home{
+        display: none;
     }
 
     .search-form-container{
-        padding-left: 0rem;
-        padding-right: .2rem;
+        padding-left: .4rem;
+        padding-right: .4rem;
     }
 
     .form-container{
@@ -415,16 +423,17 @@ input::webkit-input-placeholder {
         height: 4rem;
         width: 4rem;
         margin-right: 0rem;
+        display: none;
     }
 
 
-    .lol-home-name{
+    /* .lol-home-name{
         font-size: .7rem !important;
     }
 
     .lol-home-lp{
         font-size: .7rem !important;
-    }
+    } */
 
     .icon-leader{
         height: 2rem;
@@ -439,5 +448,56 @@ input::webkit-input-placeholder {
         margin-top: .5rem;
         height: 1rem;
         width: 2rem;
+    }
+    .lol-home-lp{
+        
+        font-size: 1rem !important;
+    }
+    .lol-home-name{
+        font-size: 1.5rem !important;
+    }
+
+    .top-3-container{
+        display: block !important;
+    }
+
+    .test{
+        font-size: .8rem;
+    }
+    .na-0{
+        display: none;
+    }
+}
+
+/* @media (max-width: 500px){
+    .search-form{
+        font-size: .7rem;
+    }
+
+    .lol-home-leaderboard-title{
+        font-size: .5rem ;
+    }
+} */
+
+@media(max-width: 480px){
+
+    .search-form-container{
+        
+    }
+    .teemo-1{
+       margin-right: 5rem;
+    }
+
+    .search-form{
+        font-size: .6rem;
+    }
+
+    .lol-home-title-main{
+        font-size: .7rem !important;
+    }
+
+    .lol-home-title-main h1{
+    
+        font-size: 1rem !important;
     }
 }

@@ -157,6 +157,40 @@
     margin-right: 2rem;
 }
 
+@media (max-width:1200px){
+    .expand-name{
+        margin-left: .2rem;
+        font-size: .7rem;
+    }
+    .last{
+        display: none;
+    }
+}
+
+
+@media (max-width:991px){
+
+    .expand-objective-title{
+        display: none;
+    }
+    .expand-top-kda{
+        margin-left: 0rem;
+    }
+    .item-kda-cs-container{
+        margin-left: .2rem;
+        margin-right: -2.2rem;
+    }
+    .decorative-lol-expand{
+        margin-left: -1.5rem;
+    }
+
+    .middle{
+        display: none;
+        margin-right: -2rem;
+    }
+}
+
+
 @media  (max-width:800px){
     .decorative-lol-expand{
         height: .2rem;

@@ -71,7 +71,7 @@ const LolExpandTeam = ({team,runes,obj,minutes}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='decorative-lol-expand'></div>
+                        <div className='decorative-lol-expand first'></div>
                         <div className='col-md-5 d-flex text-center item-kda-cs-container'>
                             
 
@@ -90,14 +90,14 @@ const LolExpandTeam = ({team,runes,obj,minutes}) => {
                             </div>
 
                         </div>
-                        <div className='decorative-lol-expand'></div>
+                        <div className='decorative-lol-expand middle'></div>
                         <div className='col-md-3 d-flex text-center'>
                                 <div className='damage-container d-flex'>
                                     <p className='damage-p'>Dealt: {p.totalDamageDealtToChampions}</p>
                                     <p className='damage-p'>Taken: {p.totalDamageTaken}</p>
                                 </div>
                         </div>
-                        <div className='decorative-lol-expand'></div>
+                        <div className='decorative-lol-expand last'></div>
                     </div>
                 )) : ''}
 

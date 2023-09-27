@@ -60,7 +60,7 @@ const LolPlayerPage = () => {
                         <div className='container-fluid text-center player-main'>
                             <div className='container  player-info pb-4'>
                                 <div>
-                                    <h2 className='player-page-text'>
+                                    <h2 className='player-page-text main-name'>
                                         <img className='profile-icon' src={player[0].profile_icon} height={100}></img> {player[3].player.summonerName}
                                     </h2>
                                 </div>

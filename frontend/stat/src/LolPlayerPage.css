@@ -144,3 +144,9 @@
  
 
 }
+
+@media (max-width:1200px){
+  .player-page-text{
+    font-size: 1.2rem;
+  }
+}
